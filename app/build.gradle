@@ -70,4 +70,5 @@ dependencies {
     // Support-v4 (Anko Layouts)
     compile "org.jetbrains.anko:anko-support-v4:$anko_version"
 
+    implementation 'com.android.support:recyclerview-v7:26.1.0'
 }

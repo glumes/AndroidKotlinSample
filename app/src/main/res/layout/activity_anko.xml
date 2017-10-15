@@ -6,4 +6,5 @@
     android:layout_height="match_parent"
     tools:context="com.glumes.androidkotlinsample.anko.AnkoActivity">
 
+
 </android.support.constraint.ConstraintLayout>
