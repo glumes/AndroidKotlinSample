@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="anko_button" type="id" />
+    <item name="anko_edittext" type="id" />
+
+    <item name="login_tip" type="id" />
+
+    <item name="account_text" type="id" />
+    <item name="account_layout" type="id" />
+    <item name="account_input" type="id" />
+
+    <item name="password_text" type="id" />
+    <item name="password_input" type="id" />
+</resources>
