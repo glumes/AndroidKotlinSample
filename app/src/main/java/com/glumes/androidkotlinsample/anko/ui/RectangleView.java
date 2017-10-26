@@ -3,6 +3,7 @@ package com.glumes.androidkotlinsample.anko.ui;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -15,35 +16,23 @@ import android.view.View;
 
 public class RectangleView extends View {
 
-    public static final String TAG = "RectangleView";
-
-    public int size = 10;
+    public int size ;
+    public Paint mPaint;
 
     public RectangleView(Context context) {
-        this(context, null);
-        Log.d(TAG, "1");
-
-    }
-
-    public RectangleView(Context context, @Nullable AttributeSet attrs) {
-        this(context, null, 0);
-        Log.d(TAG, "2");
-
-    }
-
-    public RectangleView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        Log.d(TAG, "3");
+        super(context);
+        mPaint = new Paint();
+        mPaint.setColor(Color.RED);
+        mPaint.setAntiAlias(true);
+        mPaint.setStrokeWidth(2);
+        mPaint.setStyle(Paint.Style.STROKE);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         setBackgroundColor(Color.BLUE);
-        Log.d(TAG, "onDraw");
+        canvas.drawCircle(getMeasuredWidth() / 2, getMeasuredHeight() / 2, size, mPaint);
     }
 
-    public void setSize(int size) {
-        this.size = size;
-    }
 }

@@ -1,6 +1,5 @@
 package com.glumes.androidkotlinsample
 
-import android.view.View
 import com.glumes.androidkotlinsample.anko.AnkoActivity
 import org.jetbrains.anko.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
@@ -10,12 +9,12 @@ import org.jetbrains.anko.sdk25.coroutines.onClick
  */
 class MyActivityUI : AnkoComponent<AnkoActivity> {
 
-    override fun createView(ui: AnkoContext<AnkoActivity>) = with(ui) {
+    override fun createView(ui: AnkoContext<AnkoActivity>) = ui.apply {
         verticalLayout {
             val name = editText()
             button("Say Hello") {
-                onClick { ctx.toast("Hello,${name.text}") }
+                onClick { ctx.toast("Hello, ${name.text}!") }
             }
         }
-    }
+    }.view
 }

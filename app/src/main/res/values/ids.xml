@@ -11,4 +11,8 @@
 
     <item name="password_text" type="id" />
     <item name="password_input" type="id" />
+
+    <item name="fragment_id" type="id" />
+
+    <item name="custom_view_id" type="id" />
 </resources>

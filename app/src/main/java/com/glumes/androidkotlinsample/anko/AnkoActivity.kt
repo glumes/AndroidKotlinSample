@@ -1,18 +1,21 @@
 package com.glumes.androidkotlinsample.anko
 
-import android.graphics.Color
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.ViewGroup
-import android.widget.Toast
 import com.glumes.androidkotlinsample.anko.ui.LoginUI
-import org.jetbrains.anko.*
-import org.jetbrains.anko.sdk25.coroutines.onClick
+import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.setContentView
 
-class AnkoActivity : AppCompatActivity() {
+class AnkoActivity : AppCompatActivity(), AnkoLogger {
 
+
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
+        LoginUI().setContentView(this)
 
 //        relativeLayout {
 //            button("button in center") {
@@ -25,30 +28,47 @@ class AnkoActivity : AppCompatActivity() {
 //            }
 //        }
 
-        verticalLayout {
+//        verticalLayout {
+//
+//            padding = dip(8)
+//
+//            val account = textView("account") {
+//                id = R.id.account_text
+//                textSize = sp(12).toFloat()
+//                // 设置自己的属性
+//            }.lparams() {
+//                // 设置布局的参数
+//            }
+//
+//            var name = editText() // 也可以什么都不设置，使用默认的设置
+//
+//            textView("password") {
+//                id = R.id.password_text
+//                onClick {
+//                    account.setText("change account")
+//                }
+//            }
+//
+//            var pwd = editText {
+//                hint = "input"
+//            }.lparams(
+//                    width = dip(100),
+//                    height = ViewGroup.LayoutParams.WRAP_CONTENT
+//            )
+//
+//            button("login") {
+//                onClick {
+//                    if (name.text.toString().equals("name")
+//                            && pwd.text.toString().equals("pwd")) {
+//                        longToast("login....")
+//                    } else {
+//                        longToast("login failed")
+//                    }
+//                }
+//            }
+//        }
 
-            padding = dip(8)
-
-            textView("account") {
-                // 设置自己的属性
-            }.lparams() {
-                // 设置布局的参数
-            }
-
-            editText {
-
-            }.lparams {
-                // 可以不要小括号
-            }
-
-            textView("password") // 可以什么都不要，使用默认
-
-            editText {
-
-            }.lparams(
-                    width = dip(100), height = ViewGroup.LayoutParams.WRAP_CONTENT
-            )
-        }
 
     }
+
 }
