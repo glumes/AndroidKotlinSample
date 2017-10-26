@@ -1,6 +1,5 @@
 package com.glumes.androidkotlinsample.anko.ui
 
-import android.util.Log
 import android.view.ViewManager
 import org.jetbrains.anko.custom.ankoView
 

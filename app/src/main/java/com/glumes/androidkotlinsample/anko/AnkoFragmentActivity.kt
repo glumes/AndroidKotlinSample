@@ -2,10 +2,8 @@ package com.glumes.androidkotlinsample.anko
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.ViewGroup
 import com.glumes.androidkotlinsample.R
-import com.glumes.androidkotlinsample.anko.ui.RectangleView
 import com.glumes.androidkotlinsample.anko.ui.rectangleView
 import org.jetbrains.anko.*
 import org.jetbrains.anko.sdk25.coroutines.onClick

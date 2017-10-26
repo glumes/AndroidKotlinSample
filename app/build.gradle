@@ -9,7 +9,7 @@ android {
     buildToolsVersion "26.0.2"
     defaultConfig {
         applicationId "com.glumes.androidkotlinsample"
-        minSdkVersion 23
+        minSdkVersion 22
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -71,4 +71,7 @@ dependencies {
     compile "org.jetbrains.anko:anko-support-v4:$anko_version"
 
     implementation 'com.android.support:recyclerview-v7:26.1.0'
+
+    compile 'com.github.bumptech.glide:glide:4.2.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.2.0'
 }
