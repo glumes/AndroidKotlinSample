@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import com.glumes.androidkotlinsample.R
 import com.glumes.androidkotlinsample.databinding.ActivityGankIoBinding
 import com.glumes.androidkotlinsample.gankio.adapter.FragmentAdapter
+import kotlinx.android.synthetic.main.activity_gank_io.*
 
 class GankIOActivity : AppCompatActivity() {
 
@@ -27,5 +28,7 @@ class GankIOActivity : AppCompatActivity() {
         mBinding.viewPager.offscreenPageLimit = 3
         mBinding.tabLayout.setupWithViewPager(mBinding.viewPager)
         mBinding.tabLayout.tabMode = TabLayout.MODE_SCROLLABLE
+
+
     }
 }

@@ -19,7 +19,7 @@ class LoginUI : AnkoComponent<AnkoActivity> {
 
             padding = dip(8)
 
-            textView("this is login ui") {
+            this.textView("this is login ui") {
                 id = R.id.login_tip
                 textSize = sp(12).toFloat()
                 typeface = Typeface.MONOSPACE
