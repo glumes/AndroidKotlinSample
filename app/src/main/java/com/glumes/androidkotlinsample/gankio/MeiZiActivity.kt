@@ -1,14 +1,13 @@
 package com.glumes.androidkotlinsample.gankio
 
-import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.os.Bundle
 import com.glumes.androidkotlinsample.R
 
-// 播放开眼视频内容
-class VideoActivity : AppCompatActivity() {
+class MeiZiActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_video)
+        setContentView(R.layout.activity_mei_zi)
     }
 }
