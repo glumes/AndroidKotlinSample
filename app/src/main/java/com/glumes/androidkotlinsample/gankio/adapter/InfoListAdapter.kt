@@ -71,11 +71,15 @@ class InfoListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     override fun getItemViewType(position: Int): Int {
-//        return if (position + 1 == itemCount) ITEM_FOOTER else ITEM_CONTENT
-        return ITEM_CONTENT
+        return if (position + 1 == itemCount) ITEM_FOOTER else ITEM_CONTENT
+//        return ITEM_CONTENT
     }
 
     fun addData(data: BaseResult) {
         mData.add(data)
+    }
+
+    fun addData(data: List<BaseResult>) {
+        mData.addAll(data)
     }
 }

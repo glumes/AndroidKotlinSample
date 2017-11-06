@@ -15,19 +15,20 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".anko.AnkoActivity" />
         <activity android:name=".anko.AnkoFragmentActivity" />
-        <activity android:name=".anko.RefreshListActivity">
-
-        </activity>
+        <activity android:name=".anko.RefreshListActivity" />
         <activity
             android:name=".gankio.GankIOActivity"
-            android:theme="@style/TransparentTheme"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/TransparentTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".gankio.ArticleActivity" />
+        <activity android:name=".gankio.OpenEyeActivity" />
+        <activity android:name=".gankio.VideoActivity"></activity>
     </application>
 
 </manifest>
