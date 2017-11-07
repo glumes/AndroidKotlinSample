@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.glumes.androidkotlinsample.gankio.ArticleActivity
-import com.glumes.androidkotlinsample.gankio.util.articleUrl
+import com.glumes.androidkotlinsample.gankio.util.ARTICLE_URL
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
 
         button.setOnClickListener({
             val intent = Intent(this, ArticleActivity::class.java)
-            intent.putExtra(articleUrl, "http://www.baidu.com/")
+            intent.putExtra(ARTICLE_URL, "http://www.baidu.com/")
             startActivity(intent)
         })
     }

@@ -1,7 +1,5 @@
 package com.glumes.androidkotlinsample.gankio.adapter
 
-import android.app.ActivityOptions
-import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -9,9 +7,7 @@ import android.view.ViewGroup
 import com.glumes.androidkotlinsample.R
 import com.glumes.androidkotlinsample.databinding.ItemFooterBinding
 import com.glumes.androidkotlinsample.databinding.ItemInfoMvvmBinding
-import com.glumes.androidkotlinsample.gankio.ArticleActivity
 import com.glumes.androidkotlinsample.gankio.model.BaseResult
-import com.glumes.androidkotlinsample.gankio.util.articleUrl
 import com.orhanobut.logger.Logger
 
 /**

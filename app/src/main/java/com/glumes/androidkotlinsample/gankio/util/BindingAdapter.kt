@@ -14,7 +14,7 @@ import com.glumes.androidkotlinsample.R
 object ImageBindingAdapter {
 
     @JvmStatic
-    @BindingAdapter("app:imageUrl")
+    @BindingAdapter("imageUrl")
     fun setImageResource(view: ImageView, url: List<String>?) {
 
         if (url == null) {
@@ -25,7 +25,20 @@ object ImageBindingAdapter {
                 .load(url[0])
                 .apply(RequestOptions().placeholder(R.mipmap.image_default).error(R.mipmap.image_default))
                 .into(view)
+    }
 
+    @JvmStatic
+    @BindingAdapter("imageUrl")
+    fun setImageResource(view: ImageView, url: String?) {
+
+        if (url == null) {
+            return
+        }
+
+        Glide.with(view.context)
+                .load(url[0])
+                .apply(RequestOptions().placeholder(R.mipmap.image_default).error(R.mipmap.image_default))
+                .into(view)
     }
 }
 

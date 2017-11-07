@@ -11,7 +11,7 @@ import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import com.glumes.androidkotlinsample.R
-import com.glumes.androidkotlinsample.gankio.util.articleUrl
+import com.glumes.androidkotlinsample.gankio.util.ARTICLE_URL
 import com.orhanobut.logger.Logger
 
 // 干货集中营文章加载
@@ -27,7 +27,7 @@ class ArticleActivity : AppCompatActivity() {
 
 
         setAnimator()
-        url = intent.getStringExtra(articleUrl)
+        url = intent.getStringExtra(ARTICLE_URL)
 
         if (url == null) {
             url = "http://www.baidu.com/"

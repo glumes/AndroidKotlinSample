@@ -19,7 +19,7 @@ import com.glumes.androidkotlinsample.gankio.di.component.DaggerFragmentComponen
 import com.glumes.androidkotlinsample.gankio.di.module.FragmentModule
 import com.glumes.androidkotlinsample.gankio.di.module.GankApiModule
 import com.glumes.androidkotlinsample.gankio.listener.RecyclerViewScrollListener
-import com.glumes.androidkotlinsample.gankio.util.articleUrl
+import com.glumes.androidkotlinsample.gankio.util.ARTICLE_URL
 import com.glumes.androidkotlinsample.gankio.viewmodel.FragmentViewModel
 import com.orhanobut.logger.Logger
 import javax.inject.Inject
@@ -65,7 +65,7 @@ class InfoFragment : Fragment() {
         adapter.mListener = object : onItemClickListener {
             override fun onItemClick(position: Int) {
                 val intent = Intent(mBinding.root.context, ArticleActivity::class.java)
-                intent.putExtra(articleUrl, adapter.mData[position].url)
+                intent.putExtra(ARTICLE_URL, adapter.mData[position].url)
                 mBinding.root.context.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(activity).toBundle())
             }
 
