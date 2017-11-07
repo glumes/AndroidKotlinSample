@@ -10,11 +10,6 @@ import com.orhanobut.logger.Logger
 
 abstract class RecyclerViewScrollListener(var mLayoutManager: RecyclerView.LayoutManager,val footerNum:Int = 1) : RecyclerView.OnScrollListener() {
 
-
-    override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
-        super.onScrolled(recyclerView, dx, dy)
-    }
-
     override fun onScrollStateChanged(recyclerView: RecyclerView?, newState: Int) {
 
 
