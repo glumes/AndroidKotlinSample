@@ -40,5 +40,18 @@ object ImageBindingAdapter {
                 .apply(RequestOptions().placeholder(R.mipmap.image_default).error(R.mipmap.image_default))
                 .into(view)
     }
+
+//    @JvmStatic
+//    @BindingAdapter("girlUrl")
+//    fun setImageResource(view: ImageView, url: String?) {
+//        if (url == null) {
+//            return
+//        }
+//
+//        Glide.with(view.context)
+//                .load(url)
+//                .apply(RequestOptions().placeholder(R.mipmap.image_default).error(R.mipmap.image_default))
+//                .into(view)
+//    }
 }
 

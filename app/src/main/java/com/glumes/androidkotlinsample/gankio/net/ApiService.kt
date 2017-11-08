@@ -66,4 +66,8 @@ interface OpenEyeService {
     fun getMoreHomeData(@Url url: String): Observable<HomeBean>
 
 
+    @GET("data/福利/{num}/{page}")
+    fun getMeiZiImaga(@Path("num") num: Int, @Path("page") page: Int)
+            : Observable<HttpResult<List<BaseResult>>>
+
 }

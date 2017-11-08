@@ -68,7 +68,6 @@ class InfoFragment : Fragment() {
                 intent.putExtra(ARTICLE_URL, adapter.mData[position].url)
                 mBinding.root.context.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(activity).toBundle())
             }
-
         }
 
 
