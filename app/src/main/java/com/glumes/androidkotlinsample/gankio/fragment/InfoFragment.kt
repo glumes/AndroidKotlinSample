@@ -24,7 +24,7 @@ import com.glumes.androidkotlinsample.gankio.viewmodel.FragmentViewModel
 import com.orhanobut.logger.Logger
 import javax.inject.Inject
 
-class InfoFragment : Fragment() {
+class InfoFragment : BaseFragment() {
 
     private var mType: String? = null
     private var mNum: Int? = 0

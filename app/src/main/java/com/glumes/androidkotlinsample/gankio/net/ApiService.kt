@@ -20,6 +20,10 @@ interface GankIOApiService {
     @GET("data/{type}/{num}/{page}")
     fun getDataByType(@Path("type") type: String, @Path("num") num: Int, @Path("page") page: Int)
             : Observable<HttpResult<List<BaseResult>>>
+
+    @GET("data/福利/{num}/{page}")
+    fun getMeiZiImaga(@Path("num") num: Int, @Path("page") page: Int)
+            : Observable<HttpResult<List<BaseResult>>>
 }
 
 interface OpenEyeService {
@@ -66,8 +70,11 @@ interface OpenEyeService {
     fun getMoreHomeData(@Url url: String): Observable<HomeBean>
 
 
-    @GET("data/福利/{num}/{page}")
-    fun getMeiZiImaga(@Path("num") num: Int, @Path("page") page: Int)
-            : Observable<HttpResult<List<BaseResult>>>
+    /**
+     * banner+一页数据，num=1
+     */
+    @GET("v2/feed?&num=1")
+    fun getHomeData(@Query("date") date: Long): Observable<HomeBean>
+
 
 }

@@ -13,7 +13,7 @@ import com.glumes.androidkotlinsample.gankio.fragment.InfoFragment
 const val num = 10
 const val page = 1
 
-class FragmentAdapter(manager: FragmentManager) : FragmentPagerAdapter(manager) {
+class GankIOFragmentAdapter(manager: FragmentManager) : FragmentPagerAdapter(manager) {
 
     lateinit var mContext: Context
     lateinit var mFragmentList: ArrayList<Fragment>
