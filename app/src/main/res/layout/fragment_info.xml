@@ -2,9 +2,6 @@
 
     <data>
 
-        <variable
-            name="viewmodel"
-            type="com.glumes.androidkotlinsample.gankio.viewmodel.FragmentViewModel" />
     </data>
 
     <RelativeLayout

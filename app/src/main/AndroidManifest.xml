@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".MainActivity" />
         <activity android:name=".anko.AnkoActivity" />
         <activity android:name=".anko.AnkoFragmentActivity" />
         <activity android:name=".anko.RefreshListActivity" />
@@ -21,18 +21,18 @@
             android:name=".gankio.GankIOActivity"
             android:screenOrientation="portrait"
             android:theme="@style/TransparentTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
 
         <activity android:name=".gankio.ArticleActivity" />
 
         <activity android:name=".gankio.OpenEyeActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
 

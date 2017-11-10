@@ -26,19 +26,16 @@ import javax.inject.Inject
 
 class InfoFragment : BaseFragment() {
 
+
     private var mType: String? = null
     private var mNum: Int? = 0
     private var mPage: Int? = 0
-
-    private lateinit var mBinding: FragmentInfoBinding
 
     @Inject
     lateinit var adapter: InfoListAdapter
 
     @Inject
     lateinit var viewModel: FragmentViewModel
-
-    private lateinit var mLayoutManager: LinearLayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,21 +44,10 @@ class InfoFragment : BaseFragment() {
             mNum = arguments.getInt(ARG_PARAM2)
             mPage = arguments.getInt(ARG_PARAM3)
         }
-        DaggerFragmentComponent.builder()
-                .appComponent(SampleApp.getInstance().appComponent)
-                .fragmentModule(FragmentModule())
-                .gankApiModule(GankApiModule())
-                .build()
-                .inject(this)
-
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-
-        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_info, container, false)
-
-
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         adapter.mListener = object : onItemClickListener {
             override fun onItemClick(position: Int) {
                 val intent = Intent(mBinding.root.context, ArticleActivity::class.java)
@@ -70,37 +56,12 @@ class InfoFragment : BaseFragment() {
             }
         }
 
-
-        mLayoutManager = LinearLayoutManager(context)
-        mBinding.recyclerView.layoutManager = mLayoutManager
-        mBinding.recyclerView.setHasFixedSize(true)
         mBinding.recyclerView.adapter = adapter
 
-        mBinding.viewmodel = viewModel
-        mBinding.refreshLayout.setOnRefreshListener {
-            mPage!!.inc()
-            requestData()
-        }
-        mBinding.recyclerView.addOnScrollListener(object : RecyclerViewScrollListener(mLayoutManager, 1) {
-            override fun loadMore() {
-                Logger.d("in bottom")
-                if (mBinding.refreshLayout.isRefreshing) {
-                    mBinding.refreshLayout.isRefreshing = false
-                } else {
-                    requestData()
-                }
-            }
-        })
-        return mBinding.root
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        requestData()
     }
 
 
-    private fun requestData() {
+    override fun requestData() {
         viewModel.requestData(mType!!, mNum!!, mPage!!)
                 .doOnTerminate({
                     mBinding.refreshLayout.isRefreshing = false
@@ -127,4 +88,20 @@ class InfoFragment : BaseFragment() {
             return fragment
         }
     }
+
+    override fun inject() {
+        DaggerFragmentComponent.builder()
+                .appComponent(SampleApp.getInstance().appComponent)
+                .fragmentModule(FragmentModule())
+                .gankApiModule(GankApiModule())
+                .build()
+                .inject(this)
+    }
+
+    override fun refresh() {
+        mPage!!.inc()
+        requestData()
+    }
+
+
 }
