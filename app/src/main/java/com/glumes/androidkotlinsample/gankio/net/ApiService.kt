@@ -34,7 +34,7 @@ interface OpenEyeService {
             get() = "http://baobab.kaiyanapp.com/api/"
 
         val HomeUrl:String
-            get() = "http://baobab.kaiyanapp.com/api/v2/feed?&num=1/"
+            get() = "http://baobab.kaiyanapp.com/api/v2/feed?&num=1"
     }
 
 

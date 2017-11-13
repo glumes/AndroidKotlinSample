@@ -11,6 +11,6 @@ import io.reactivex.Observable
 class HomeViewModel(var openEyeService: OpenEyeService) : BaseViewModel {
 
     fun requestData(): Observable<HomeBean> {
-        return openEyeService.getHomeData(OpenEyeService.BaseUrl, System.currentTimeMillis())
+        return openEyeService.getHomeData(OpenEyeService.HomeUrl, System.currentTimeMillis())
     }
 }

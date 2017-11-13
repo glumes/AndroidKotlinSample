@@ -65,4 +65,5 @@ data class ItemListBean(val type: String, val data: Data?, val tag: String) : Se
         data class Url(val size: Long) : Serializable
 
     }
+
 }

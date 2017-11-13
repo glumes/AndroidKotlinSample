@@ -24,16 +24,32 @@ class HomeFragment : BaseFragment() {
 
 
     override fun requestData() {
-        (mViewModel as HomeViewModel).requestData().map {
-            return@map it.issueList
-        }.flatMap {
-            return@flatMap Observable.fromIterable(it)
-        }.map {
-            return@map it
-        }.subscribeOn(Schedulers.io())
+        (mViewModel as HomeViewModel).requestData()
+                .map {
+                    Logger.d(it.nextPageUrl)
+                    for (bean in it.issueList) {
+                        Logger.d(bean.itemList.size)
+                        Logger.d(bean.count)
+                    }
+                    return@map it.issueList
+                }
+                .flatMap {
+                    Logger.d(it.size)
+                    return@flatMap Observable.fromIterable(it)
+                }
+                .map {
+                    return@map it.itemList
+                }
+                .flatMap {
+                    return@flatMap Observable.fromIterable(it)
+                }
+                .filter {
+                    it.type == "video"
+                }
+                .subscribeOn(Schedulers.io())
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    Logger.d(it.releaseTime)
+                    Logger.d(it.type)
                 }, {
                     Logger.d(it.message)
                 })

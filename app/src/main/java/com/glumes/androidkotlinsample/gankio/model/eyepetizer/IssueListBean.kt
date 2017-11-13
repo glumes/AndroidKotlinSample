@@ -3,9 +3,9 @@ package com.glumes.androidkotlinsample.gankio.model.eyepetizer
 /**
  * @Author  glumes
  */
-class IssueListBean(val releaseTime: Int,
+class IssueListBean(val releaseTime: Long,
                     val type: String,
-                    val date: Int,
-                    val publishTime: Int,
+                    val date: Long,
+                    val publishTime: Long,
                     val itemList: List<ItemListBean>,
                     val count: Int)
