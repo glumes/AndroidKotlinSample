@@ -1,7 +1,5 @@
 package com.glumes.androidkotlinsample.gankio.di.component
 
-import com.glumes.androidkotlinsample.gankio.di.module.FragmentModule
-import com.glumes.androidkotlinsample.gankio.di.module.GankApiModule
 import com.glumes.androidkotlinsample.gankio.di.module.HomeModule
 import com.glumes.androidkotlinsample.gankio.di.module.OpenEyeApiModule
 import com.glumes.androidkotlinsample.gankio.di.scope.FragmentScope

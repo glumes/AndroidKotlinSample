@@ -32,6 +32,9 @@ interface OpenEyeService {
     companion object {
         val BaseUrl: String
             get() = "http://baobab.kaiyanapp.com/api/"
+
+        val HomeUrl:String
+            get() = "http://baobab.kaiyanapp.com/api/v2/feed?&num=1/"
     }
 
 
@@ -73,8 +76,8 @@ interface OpenEyeService {
     /**
      * banner+一页数据，num=1
      */
-    @GET("v2/feed?&num=1")
-    fun getHomeData(@Query("date") date: Long): Observable<HomeBean>
+    @GET
+    fun getHomeData(@Url url:String,@Query("date") date: Long): Observable<HomeBean>
 
 
 }

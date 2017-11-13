@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import com.glumes.androidkotlinsample.R
 import com.glumes.androidkotlinsample.databinding.ItemFooterBinding
 import com.glumes.androidkotlinsample.databinding.ItemInfoMvvmBinding
+import com.glumes.androidkotlinsample.gankio.base.BaseAdapter
 import com.glumes.androidkotlinsample.gankio.model.BaseResult
 import com.orhanobut.logger.Logger
 
@@ -34,7 +35,7 @@ class InfoItemViewHolder(binding: ItemInfoMvvmBinding) : RecyclerView.ViewHolder
 
 class FooterItemViewHolder(binding: ItemFooterBinding) : RecyclerView.ViewHolder(binding.root)
 
-class InfoListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class InfoListAdapter : BaseAdapter() {
 
 
     var mData: ArrayList<BaseResult> = ArrayList()

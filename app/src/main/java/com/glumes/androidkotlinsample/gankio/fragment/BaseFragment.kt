@@ -9,8 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.glumes.androidkotlinsample.R
 import com.glumes.androidkotlinsample.databinding.FragmentInfoBinding
+import com.glumes.androidkotlinsample.gankio.base.BaseAdapter
+import com.glumes.androidkotlinsample.gankio.base.BaseViewModel
 import com.glumes.androidkotlinsample.gankio.listener.RecyclerViewScrollListener
-import com.orhanobut.logger.Logger
+import javax.inject.Inject
 
 /**
  * @Author glumes
@@ -20,6 +22,12 @@ abstract class BaseFragment : Fragment() {
     protected lateinit var mBinding: FragmentInfoBinding
 
     private lateinit var mLayoutManager: LinearLayoutManager
+
+    @Inject
+    protected lateinit var mAdapter: BaseAdapter
+
+    @Inject
+    protected lateinit var mViewModel: BaseViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +46,6 @@ abstract class BaseFragment : Fragment() {
         mBinding.recyclerView.setHasFixedSize(true)
         mBinding.recyclerView.addOnScrollListener(object : RecyclerViewScrollListener(mLayoutManager, 1) {
             override fun loadMore() {
-                Logger.d("in bottom")
                 if (mBinding.refreshLayout.isRefreshing) {
                     mBinding.refreshLayout.isRefreshing = false
                 } else {
@@ -50,6 +57,7 @@ abstract class BaseFragment : Fragment() {
         mBinding.refreshLayout.setOnRefreshListener {
             refresh()
         }
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

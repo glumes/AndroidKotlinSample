@@ -2,27 +2,17 @@ package com.glumes.androidkotlinsample.gankio.fragment
 
 import android.app.ActivityOptions
 import android.content.Intent
-import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import com.glumes.androidkotlinsample.R
 import com.glumes.androidkotlinsample.SampleApp
-import com.glumes.androidkotlinsample.databinding.FragmentInfoBinding
 import com.glumes.androidkotlinsample.gankio.ArticleActivity
 import com.glumes.androidkotlinsample.gankio.adapter.InfoListAdapter
 import com.glumes.androidkotlinsample.gankio.adapter.onItemClickListener
 import com.glumes.androidkotlinsample.gankio.di.component.DaggerFragmentComponent
 import com.glumes.androidkotlinsample.gankio.di.module.FragmentModule
 import com.glumes.androidkotlinsample.gankio.di.module.GankApiModule
-import com.glumes.androidkotlinsample.gankio.listener.RecyclerViewScrollListener
 import com.glumes.androidkotlinsample.gankio.util.ARTICLE_URL
 import com.glumes.androidkotlinsample.gankio.viewmodel.FragmentViewModel
-import com.orhanobut.logger.Logger
-import javax.inject.Inject
 
 class InfoFragment : BaseFragment() {
 
@@ -30,12 +20,6 @@ class InfoFragment : BaseFragment() {
     private var mType: String? = null
     private var mNum: Int? = 0
     private var mPage: Int? = 0
-
-    @Inject
-    lateinit var adapter: InfoListAdapter
-
-    @Inject
-    lateinit var viewModel: FragmentViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,27 +32,27 @@ class InfoFragment : BaseFragment() {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        adapter.mListener = object : onItemClickListener {
+        (mAdapter as InfoListAdapter).mListener = object : onItemClickListener {
             override fun onItemClick(position: Int) {
                 val intent = Intent(mBinding.root.context, ArticleActivity::class.java)
-                intent.putExtra(ARTICLE_URL, adapter.mData[position].url)
+                intent.putExtra(ARTICLE_URL, (mAdapter as InfoListAdapter).mData[position].url)
                 mBinding.root.context.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(activity).toBundle())
             }
         }
 
-        mBinding.recyclerView.adapter = adapter
+        mBinding.recyclerView.adapter = (mAdapter as InfoListAdapter)
 
     }
 
 
     override fun requestData() {
-        viewModel.requestData(mType!!, mNum!!, mPage!!)
+        (mViewModel as FragmentViewModel).requestData(mType!!, mNum!!, mPage!!)
                 .doOnTerminate({
                     mBinding.refreshLayout.isRefreshing = false
                 })
                 .subscribe {
-                    adapter.addData(it)
-                    adapter.notifyDataSetChanged()
+                    (mAdapter as InfoListAdapter).addData(it)
+                    (mAdapter as InfoListAdapter).notifyDataSetChanged()
                 }
     }
 

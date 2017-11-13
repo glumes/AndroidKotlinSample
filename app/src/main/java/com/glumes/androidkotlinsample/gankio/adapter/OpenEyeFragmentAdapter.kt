@@ -5,8 +5,8 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import com.glumes.androidkotlinsample.gankio.fragment.CategoryFragment
-import com.glumes.androidkotlinsample.gankio.fragment.HotFragment
 import com.glumes.androidkotlinsample.gankio.fragment.HomeFragment
+import com.glumes.androidkotlinsample.gankio.fragment.HotFragment
 
 /**
  * @Author glumes

@@ -1,39 +1,43 @@
 package com.glumes.androidkotlinsample.gankio.fragment
 
-import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.glumes.androidkotlinsample.R
 import com.glumes.androidkotlinsample.SampleApp
-import com.glumes.androidkotlinsample.gankio.adapter.HomeAdapter
 import com.glumes.androidkotlinsample.gankio.di.component.DaggerHomeComponent
 import com.glumes.androidkotlinsample.gankio.di.module.HomeModule
 import com.glumes.androidkotlinsample.gankio.di.module.OpenEyeApiModule
 import com.glumes.androidkotlinsample.gankio.viewmodel.HomeViewModel
-import javax.inject.Inject
+import com.orhanobut.logger.Logger
+import io.reactivex.Observable
+import io.reactivex.Observer
+import io.reactivex.Scheduler
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.functions.Consumer
+import io.reactivex.schedulers.Schedulers
 
 /**
  * @Author glumes
  */
 class HomeFragment : BaseFragment() {
 
-    @Inject
-    lateinit var mAdapter: HomeAdapter
-
-    @Inject
-    lateinit var mViewModel: HomeViewModel
-
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
-        mBinding = DataBindingUtil.inflate(inflater!!, R.layout.fragment_video, container, false)
-
-        return mBinding.root
-    }
-
 
     override fun requestData() {
+        (mViewModel as HomeViewModel).requestData().map {
+            return@map it.issueList
+        }.flatMap {
+            return@flatMap Observable.fromIterable(it)
+        }.map {
+            return@map it
+        }.subscribeOn(Schedulers.io())
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    Logger.d(it.releaseTime)
+                }, {
+                    Logger.d(it.message)
+                })
+
     }
 
     override fun refresh() {
