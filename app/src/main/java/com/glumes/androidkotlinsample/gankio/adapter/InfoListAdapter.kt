@@ -7,51 +7,24 @@ import android.view.ViewGroup
 import com.glumes.androidkotlinsample.R
 import com.glumes.androidkotlinsample.databinding.ItemFooterBinding
 import com.glumes.androidkotlinsample.databinding.ItemInfoMvvmBinding
-import com.glumes.androidkotlinsample.gankio.base.BaseAdapter
+import com.glumes.androidkotlinsample.gankio.base.*
+import com.glumes.androidkotlinsample.gankio.eventhandler.EventHandler
 import com.glumes.androidkotlinsample.gankio.model.BaseResult
-import com.orhanobut.logger.Logger
 
 /**
  * @Author  glumes
  */
-
-const val ITEM_CONTENT: Int = 1
-const val ITEM_FOOTER: Int = 2
-
-
-interface onItemClickListener {
-    fun onItemClick(position: Int)
-}
-
-class InfoItemViewHolder(binding: ItemInfoMvvmBinding) : RecyclerView.ViewHolder(binding.root) {
-
-    val mBinding: ItemInfoMvvmBinding = binding
-
-    fun bind(model: BaseResult) {
-        mBinding.viewmodel = model
-        mBinding.executePendingBindings()
-    }
-}
-
-class FooterItemViewHolder(binding: ItemFooterBinding) : RecyclerView.ViewHolder(binding.root)
 
 class InfoListAdapter : BaseAdapter() {
 
 
     var mData: ArrayList<BaseResult> = ArrayList()
 
-    var mListener: onItemClickListener? = null
+    val handler: EventHandler = EventHandler()
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
         if (position + 1 != itemCount) {
-            if (holder is InfoItemViewHolder) {
-                holder.bind(mData[position])
-                if (mListener != null) {
-                    holder.mBinding.root.setOnClickListener {
-                        mListener!!.onItemClick(position)
-                    }
-                }
-            }
+            (holder as DataBindingViewHolder).bind(mData[position], handler)
         }
     }
 
@@ -68,7 +41,6 @@ class InfoListAdapter : BaseAdapter() {
                     parent,
                     false
             )
-            Logger.d("item_footer")
             return FooterItemViewHolder(footerBinding)
         }
 
@@ -78,7 +50,7 @@ class InfoListAdapter : BaseAdapter() {
                 parent,
                 false
         )
-        return InfoItemViewHolder(mBinding)
+        return DataBindingViewHolder(mBinding)
 
     }
 

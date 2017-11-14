@@ -1,5 +1,6 @@
 package com.glumes.androidkotlinsample.gankio
 
+import android.app.Activity
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.design.widget.TabLayout
@@ -19,6 +20,8 @@ class GankIOActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        activity = this
+
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_gank_io)
 
         mAdapter = GankIOFragmentAdapter(supportFragmentManager, this)
@@ -28,6 +31,14 @@ class GankIOActivity : AppCompatActivity() {
         mBinding.tabLayout.setupWithViewPager(mBinding.viewPager)
         mBinding.tabLayout.tabMode = TabLayout.MODE_SCROLLABLE
 
+    }
 
+    companion object {
+
+        lateinit var activity: GankIOActivity
+
+        fun getInstance(): Activity {
+            return activity
+        }
     }
 }

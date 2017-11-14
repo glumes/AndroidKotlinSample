@@ -1,18 +1,14 @@
 package com.glumes.androidkotlinsample.gankio.fragment
 
-import android.app.ActivityOptions
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.glumes.androidkotlinsample.SampleApp
-import com.glumes.androidkotlinsample.gankio.ArticleActivity
 import com.glumes.androidkotlinsample.gankio.adapter.InfoListAdapter
-import com.glumes.androidkotlinsample.gankio.adapter.onItemClickListener
 import com.glumes.androidkotlinsample.gankio.di.component.DaggerFragmentComponent
 import com.glumes.androidkotlinsample.gankio.di.module.FragmentModule
 import com.glumes.androidkotlinsample.gankio.di.module.GankApiModule
-import com.glumes.androidkotlinsample.gankio.util.ARTICLE_URL
 import com.glumes.androidkotlinsample.gankio.viewmodel.FragmentViewModel
+import com.orhanobut.logger.Logger
 
 class InfoFragment : BaseFragment() {
 
@@ -32,16 +28,7 @@ class InfoFragment : BaseFragment() {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (mAdapter as InfoListAdapter).mListener = object : onItemClickListener {
-            override fun onItemClick(position: Int) {
-                val intent = Intent(mBinding.root.context, ArticleActivity::class.java)
-                intent.putExtra(ARTICLE_URL, (mAdapter as InfoListAdapter).mData[position].url)
-                mBinding.root.context.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(activity).toBundle())
-            }
-        }
-
         mBinding.recyclerView.adapter = (mAdapter as InfoListAdapter)
-
     }
 
 
@@ -50,10 +37,12 @@ class InfoFragment : BaseFragment() {
                 .doOnTerminate({
                     mBinding.refreshLayout.isRefreshing = false
                 })
-                .subscribe {
+                .subscribe({
                     (mAdapter as InfoListAdapter).addData(it)
                     (mAdapter as InfoListAdapter).notifyDataSetChanged()
-                }
+                }, {
+                    Logger.e(it.message)
+                })
     }
 
     companion object {

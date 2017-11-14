@@ -1,20 +1,16 @@
 package com.glumes.androidkotlinsample.gankio.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import com.glumes.androidkotlinsample.SampleApp
+import com.glumes.androidkotlinsample.gankio.adapter.HomeAdapter
 import com.glumes.androidkotlinsample.gankio.di.component.DaggerHomeComponent
 import com.glumes.androidkotlinsample.gankio.di.module.HomeModule
 import com.glumes.androidkotlinsample.gankio.di.module.OpenEyeApiModule
 import com.glumes.androidkotlinsample.gankio.viewmodel.HomeViewModel
 import com.orhanobut.logger.Logger
 import io.reactivex.Observable
-import io.reactivex.Observer
-import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
 
 /**
@@ -23,18 +19,18 @@ import io.reactivex.schedulers.Schedulers
 class HomeFragment : BaseFragment() {
 
 
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        mBinding.recyclerView.adapter = (mAdapter as HomeAdapter)
+    }
+
+
     override fun requestData() {
         (mViewModel as HomeViewModel).requestData()
                 .map {
-                    Logger.d(it.nextPageUrl)
-                    for (bean in it.issueList) {
-                        Logger.d(bean.itemList.size)
-                        Logger.d(bean.count)
-                    }
                     return@map it.issueList
                 }
                 .flatMap {
-                    Logger.d(it.size)
                     return@flatMap Observable.fromIterable(it)
                 }
                 .map {
@@ -47,11 +43,12 @@ class HomeFragment : BaseFragment() {
                     it.type == "video"
                 }
                 .subscribeOn(Schedulers.io())
-                .subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    Logger.d(it.type)
+                    (mAdapter as HomeAdapter).addData(it)
+                    mAdapter.notifyDataSetChanged()
                 }, {
-                    Logger.d(it.message)
+                    Logger.e(it.message)
                 })
 
     }

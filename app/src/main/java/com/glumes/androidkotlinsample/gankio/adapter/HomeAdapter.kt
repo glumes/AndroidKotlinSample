@@ -1,8 +1,14 @@
 package com.glumes.androidkotlinsample.gankio.adapter
 
+import android.databinding.DataBindingUtil
 import android.support.v7.widget.RecyclerView
+import android.view.LayoutInflater
 import android.view.ViewGroup
+import com.glumes.androidkotlinsample.R
+import com.glumes.androidkotlinsample.databinding.VideoItemLayoutBinding
 import com.glumes.androidkotlinsample.gankio.base.BaseAdapter
+import com.glumes.androidkotlinsample.gankio.base.DataBindingViewHolder
+import com.glumes.androidkotlinsample.gankio.model.eyepetizer.ItemListBean
 
 
 /**
@@ -10,16 +16,30 @@ import com.glumes.androidkotlinsample.gankio.base.BaseAdapter
  */
 class HomeAdapter : BaseAdapter() {
 
+    val mData: ArrayList<ItemListBean> = ArrayList()
+
     override fun getItemCount(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return mData.size
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        (holder as DataBindingViewHolder).bind(mData[position])
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerView.ViewHolder {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val mBinding: VideoItemLayoutBinding = DataBindingUtil.inflate(
+                LayoutInflater.from(parent!!.context),
+                R.layout.video_item_layout,
+                parent,
+                false
+        )
+        return DataBindingViewHolder(mBinding)
     }
+
+
+    fun addData(data: ItemListBean) {
+        mData.add(data)
+    }
+
 
 }

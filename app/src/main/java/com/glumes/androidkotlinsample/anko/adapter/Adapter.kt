@@ -17,7 +17,7 @@ class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     fun bind(item: ItemBean) {
         itemView.item_text.text = item.content
-        Glide.with(itemView).load(item.url).into(itemView.item_image)
+        Glide.with(itemView.context).load(item.url).into(itemView.item_image)
     }
 
 }

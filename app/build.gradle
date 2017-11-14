@@ -95,6 +95,8 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:4.2.0'
     kapt 'com.github.bumptech.glide:compiler:4.2.0'
 
+//    compile 'com.github.bumptech.glide:glide:3.6.1'
+
     compile 'com.google.code.gson:gson:2.8.2'
 
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
@@ -114,6 +116,7 @@ dependencies {
 
     compile 'com.facebook.fresco:fresco:1.5.0'
 
+    compile 'com.google.vr:sdk-videowidget:1.100.0'
 
 }
 

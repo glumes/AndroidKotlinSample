@@ -23,8 +23,16 @@ object ImageBindingAdapter {
 
         Glide.with(view.context)
                 .load(url[0])
-                .apply(RequestOptions().placeholder(R.mipmap.image_default).error(R.mipmap.image_default))
+                .apply(RequestOptions()
+                        .placeholder(R.mipmap.image_default).error(R.mipmap.image_default)
+                        .centerCrop())
                 .into(view)
+//
+//        Glide.with(view.context)
+//                .load(url[0])
+//                .asBitmap()
+//                .centerCrop()
+//                .into(view)
     }
 
     @JvmStatic
@@ -35,9 +43,17 @@ object ImageBindingAdapter {
             return
         }
 
+//        Glide.with(view.context)
+//                .load(url)
+//                .asBitmap()
+//                .centerCrop()
+//                .into(view)
+
         Glide.with(view.context)
-                .load(url[0])
-                .apply(RequestOptions().placeholder(R.mipmap.image_default).error(R.mipmap.image_default))
+                .load(url)
+                .apply(RequestOptions()
+                        .placeholder(R.mipmap.image_default).error(R.mipmap.image_default)
+                        .centerCrop())
                 .into(view)
     }
 
