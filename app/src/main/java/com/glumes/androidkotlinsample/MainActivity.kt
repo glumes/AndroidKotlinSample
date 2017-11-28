@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra(ARTICLE_URL, "http://www.baidu.com/")
             startActivity(intent)
         })
+
     }
 
     /**

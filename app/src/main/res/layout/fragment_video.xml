@@ -10,6 +10,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <io.vov.vitamio.widget.CenterLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <io.vov.vitamio.widget.VideoView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </io.vov.vitamio.widget.CenterLayout>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/videoListView"
