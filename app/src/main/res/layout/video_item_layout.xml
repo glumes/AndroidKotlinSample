@@ -8,6 +8,10 @@
             name="model"
             type="com.glumes.androidkotlinsample.gankio.model.eyepetizer.ItemListBean" />
 
+        <variable
+            name="handler"
+            type="com.glumes.androidkotlinsample.gankio.eventhandler.EventHandler" />
+
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -20,6 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:scaleType="fitXY"
+            android:onClick="@{v -> handler.playVideo(v,model.data)}"
             android:src="@drawable/home_page_header_cover"
             app:imageUrl="@{model.data.cover.homepage}" />
 

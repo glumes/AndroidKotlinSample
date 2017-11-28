@@ -8,6 +8,7 @@ import com.glumes.androidkotlinsample.R
 import com.glumes.androidkotlinsample.databinding.VideoItemLayoutBinding
 import com.glumes.androidkotlinsample.gankio.base.BaseAdapter
 import com.glumes.androidkotlinsample.gankio.base.DataBindingViewHolder
+import com.glumes.androidkotlinsample.gankio.eventhandler.EventHandler
 import com.glumes.androidkotlinsample.gankio.model.eyepetizer.ItemListBean
 
 
@@ -23,7 +24,8 @@ class HomeAdapter : BaseAdapter() {
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
-        (holder as DataBindingViewHolder).bind(mData[position])
+        (holder as DataBindingViewHolder).bind(mData[position], EventHandler())
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerView.ViewHolder {

@@ -5,7 +5,10 @@ import android.content.Intent
 import android.view.View
 import com.glumes.androidkotlinsample.gankio.ArticleActivity
 import com.glumes.androidkotlinsample.gankio.GankIOActivity
+import com.glumes.androidkotlinsample.gankio.VideoActivity
+import com.glumes.androidkotlinsample.gankio.model.eyepetizer.ItemListBean
 import com.glumes.androidkotlinsample.gankio.util.ARTICLE_URL
+import com.glumes.androidkotlinsample.gankio.util.VIDEO_MODEL_INFO
 
 /**
  * @Author glumes
@@ -18,5 +21,11 @@ class EventHandler {
         view.context.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(GankIOActivity.getInstance()).toBundle())
     }
 
+
+    fun playVideo(view: View, data: ItemListBean.Data) {
+        val intent = Intent(view.context, VideoActivity::class.java)
+        intent.putExtra(VIDEO_MODEL_INFO, data)
+        view.context.startActivity(intent)
+    }
 
 }
