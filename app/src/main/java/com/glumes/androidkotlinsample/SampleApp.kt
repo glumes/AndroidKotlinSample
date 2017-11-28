@@ -8,6 +8,7 @@ import com.glumes.androidkotlinsample.gankio.di.component.DaggerAppComponent
 import com.glumes.androidkotlinsample.gankio.di.module.AppModule
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
+import io.vov.vitamio.Vitamio
 
 /**
  * @Author glumes
@@ -26,6 +27,8 @@ class SampleApp : Application() {
         sampleApp = this
 
         Logger.addLogAdapter(AndroidLogAdapter())
+
+        Vitamio.isInitialized(this)
 
         initAppComponent()
     }
